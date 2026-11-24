@@ -120,13 +120,13 @@ Permissions help protect sensitive files and prevent the agent from performing r
 
 ## Detection pass
 
-**Slop:** The agent performed additional checks that were not required by the original lesson skill, including Git, Node.js, npm, and workspace directory checks.
+**Slop:** none. The agent performed the checks specified in the current check-local-stack skill.
 
-**Drift:** The agent expanded the local stack verification beyond Python and PostgreSQL. It checked Python successfully but omitted the PostgreSQL client version and server readiness checks required by the original lesson.
+**Drift:** none observed. The agent stayed within the local environment verification scope and requested permission before making any configuration changes.
 
-**Hallucination:** No confirmed hallucination was identified. The reported Python version matched my manual terminal output. However, the reported hook working directory issue still requires verification through an actual hook test.
+**Hallucination:** No confirmed hallucination was identified. The reported Python version matched my manual terminal verification. The reported hook path issue still requires independent verification.
 
-**One fix I would make next time:** I would make the skill more explicit about its scope by requiring the agent to execute every listed command, report the raw output, and avoid unrelated checks unless explicitly requested.
+**One fix I would make next time:** I would improve the skill by adding PostgreSQL client and server readiness checks, requiring raw command outputs, and explicitly limiting the agent to the listed read-only checks.
 
 ### Agent Summary
 
