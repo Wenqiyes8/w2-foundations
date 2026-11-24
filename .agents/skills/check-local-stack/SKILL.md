@@ -1,15 +1,22 @@
 ---
 name: check-local-stack
-description: Checks whether Python and PostgreSQL look available on this machine before local app work. Use when verifying the local stack, preparing to run Flask with PostgreSQL, or confirming installfest tools still work.
+description: Check whether the local engineering environment is ready for development by verifying required tools and workspace configuration.
 ---
 
-# Check local stack
+# Check Local Stack
 
-When this skill is active:
+## Instructions
 
-1. State the commands you will run before you run them.
-2. Check Python with `python3 --version`.
-3. Check PostgreSQL client access with `psql --version`.
-4. If `pg_isready` exists, run `pg_isready` and report the result.
-5. Summarize what is ready and what is missing.
-6. Do not install packages unless the user explicitly asks for installs.
+1. Run `pwd` to confirm the current workspace directory.
+2. Run `git --version` and `git status` to verify Git is installed and the workspace is a Git repository.
+3. Run `python3 --version` to verify Python is installed.
+4. Run `node --version` and `npm --version` to check the Node.js environment.
+5. Check whether the `.agents` and `scripts` directories exist.
+6. Report the results, including any missing tools or configuration issues.
+
+## Rules
+
+- Only perform read-only checks.
+- Do not install software automatically.
+- Do not delete or modify existing files.
+- Ask the user before making any changes.
