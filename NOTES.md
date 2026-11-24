@@ -1,72 +1,127 @@
 # W2 Foundations - Challenge Notes
 
+**Project path:** `/Users/katew/CodePlatoon/w2-foundations`
+
+**Why a harness matters:** A harness keeps agent instructions and safety configurations organized in a consistent workspace so they can be shared, reused, and reviewed through Git.
+
 ## 1. Skill Test
+
+**Skill name:** check-local-stack
 
 ### Prompt Used
 
-Use the check-local-stack skill to check my local
-development environment.
+Use the check-local-stack skill to check my local development environment.
 
 ### Agent Summary
 
-[Describe what the agent actually checked and reported.]
+Pending verification in Antigravity.
 
 ### Tool Call Approvals
 
-[Describe which tool calls required approval and
-whether you approved them.]
+Pending verification.
+
+### Failed Commands
+
+Pending verification.
+
+### Why a File-Backed Skill Is Useful
+
+A file-backed skill saves reusable instructions so developers do not have to repeat the same prompt every time. It also allows team members to share and improve instructions through Git.
+
+### Real-World Use
+
+A development team can use a skill to verify that new developers have the required tools installed before starting a project.
 
 ## 2. Hook Test
 
+**Hook name:** deny-rm
+
+**Event:** PreToolUse
+
+**Matcher:** run_command
+
+**Script:** scripts/deny_rm.py
+
 ### Denied Command
 
-Command: rm hook-test.txt
+Command: `rm hook-test.txt`
 
-Actual result:
-[Paste the actual hook response here.]
+Actual result: Pending verification in Antigravity.
 
 ### Allowed Command
 
-Command: ls
+Command: `ls NOTES.md`
 
-Actual result:
-[Paste the actual command result here.]
+Actual result: Pending verification in Antigravity.
 
 ### Dry Run
 
-Deny test:
-[Paste terminal output here.]
+**Deny test:**
 
-Allow test:
-[Paste terminal output here.]
+Input:
+
+`{"toolCall":{"name":"run_command","args":{"CommandLine":"rm NOTES.md"}}}`
+
+Output:
+
+`{"decision": "deny", "reason": "Course hook blocks rm. Use a safer cleanup path or run rm yourself in your own terminal."}`
+
+Result: Passed.
+
+**Allow test:**
+
+Input:
+
+`{"toolCall":{"name":"run_command","args":{"CommandLine":"ls NOTES.md"}}}`
+
+Output:
+
+`{"decision": "allow"}`
+
+Result: Passed.
+
+Both local dry-run tests passed. The script correctly denied the blocked command and allowed the safe command.
+
+### How the Hook Works
+
+Antigravity sends tool-call information to the Python script as JSON through stdin. The script checks the command and returns a JSON decision through stdout. This makes the hook easy to understand and test independently.
+
+### Real-World Use
+
+A development team can use a PreToolUse hook to prevent agents from executing destructive commands or accessing sensitive information.
+
+### Limitations
+
+The current hook only checks basic rm patterns. It does not replace permissions or sandbox restrictions.
 
 ## 3. Permissions
 
 ### Deny Rules
 
-[List the actual Deny rules configured in Antigravity.]
+Pending configuration verification.
 
 ### Ask Rules
 
-[List the actual Ask rules configured in Antigravity.]
+Pending configuration verification.
 
 ### Allow Rules
 
-[List the actual Allow rules configured in Antigravity.]
+Pending configuration verification.
 
 ### Permission Evaluation
 
-When permission rules conflict, Deny takes priority
-over Ask and Allow. If no Deny rule matches, Ask
-takes priority over Allow.
+When permission rules conflict, Deny takes priority over Ask and Allow. If no Deny rule matches, Ask takes priority over Allow. A broad Allow rule cannot override an explicit Deny rule.
 
+### Why Permissions Matter
+
+Permissions help protect sensitive files and prevent the agent from performing risky operations without human approval.
 
 ## Detection pass
 
-Slop:
+Slop: Pending skill review.
 
-Drift:
+Drift: Pending skill review.
 
-Hallucination:
+Hallucination: Pending skill review.
 
-One fix I would make next time:
+One fix I would make next time: Pending skill review.
