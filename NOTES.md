@@ -118,10 +118,12 @@ Permissions help protect sensitive files and prevent the agent from performing r
 
 ## Detection pass
 
-Slop: Pending skill review.
+## Detection pass
 
-Drift: Pending skill review.
+Slop: none
 
-Hallucination: Pending skill review.
+Drift: none
 
-One fix I would make next time: Pending skill review.
+Hallucination: none
+
+One fix I would make next time: I would update the skill to require the agent to report the raw command output for every check, so I can verify its findings more easily and avoid relying only on its summary.
