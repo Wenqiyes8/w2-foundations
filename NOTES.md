@@ -127,3 +127,15 @@ Drift: none
 Hallucination: none
 
 One fix I would make next time: I would update the skill to require the agent to report the raw command output for every check, so I can verify its findings more easily and avoid relying only on its summary.
+
+### Manual Verification
+
+I manually verified the local development environment by running the following commands in my terminal:
+
+- `python3 --version`: Python 3.15.2
+- `psql --version`: psql (PostgreSQL) 18.7 (Homebrew)
+- `pg_isready`: /tmp:5432 - accepting connections
+
+All three manual checks passed. Python and PostgreSQL are available, and the PostgreSQL server is accepting connections.
+
+These results provide a baseline for verifying the accuracy of the agent's reported results during the detection pass.
